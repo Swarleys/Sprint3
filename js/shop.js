@@ -61,6 +61,7 @@ function generateCart() {
     }
   }
   cartList.length = 0;
+  applyPromotionsCart();
   console.log(cart);
   return cart;
 }
@@ -68,6 +69,23 @@ function generateCart() {
 // Exercise 5
 function applyPromotionsCart() {
   // Apply promotions to each item in the array "cart"
+  for (const product of cart) {
+    if (product.id === 1 && product.quantity >= 3) {
+      product.subTotalWithDiscount = 10 * product.quantity;
+      console.log(
+        `El precio total con descuento de ${product.name} es ${product.subTotalWithDiscount}`
+      );
+    }
+    if (product.id === 3 && product.quantity >= 10) {
+      product.subTotalWithDiscount = (
+        ((product.price * 2) / 3) *
+        product.quantity
+      ).toFixed(2);
+      console.log(
+        `El precio total con descuento de ${product.name} es ${product.subTotalWithDiscount}`
+      );
+    }
+  }
 }
 
 // ** Nivell II **
