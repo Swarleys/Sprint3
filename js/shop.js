@@ -41,6 +41,28 @@ function calculateTotal() {
 function generateCart() {
   // Using the "cartlist" array that contains all the items in the shopping cart,
   // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
+  for (const productList of cartList) {
+    let inCart = false;
+    for (const productCart of cart) {
+      if (productList.id === productCart.id) {
+        inCart = true;
+        productCart.quantity++;
+        productCart.subTotal = productCart.quantity * productCart.price;
+        productCart.subTotalWithDiscount = productCart.subTotal;
+      }
+    }
+
+    if (!inCart) {
+      let newProduct = { ...productList };
+      newProduct.quantity = 1;
+      newProduct.subTotal = newProduct.quantity * newProduct.price;
+      newProduct.subTotalWithDiscount = newProduct.subTotal;
+      cart.push(newProduct);
+    }
+  }
+  cartList.length = 0;
+  console.log(cart);
+  return cart;
 }
 
 // Exercise 5
