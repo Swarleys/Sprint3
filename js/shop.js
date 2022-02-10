@@ -26,11 +26,15 @@ function buy(id) {
 function cleanCart() {
   cartList.length = 0;
   console.log(`El carrito esta vacio ${cartList}`);
+  return cartList;
 }
 
 // Exercise 3
 function calculateTotal() {
   // Calculate total price of the cart using the "cartList" array
+  total = cartList.reduce((acc, { price }) => acc + price, 0).toFixed(2);
+  console.log(`El total del carrito es ${total}`);
+  return total;
 }
 
 // Exercise 4
