@@ -94,7 +94,24 @@ function applyPromotionsCart() {
 function addToCart(id) {
   // Refactor previous code in order to simplify it
   // 1. Loop for to the array products to get the item to add to cart
+  let chosenProduct = products.find((product) => id === product.id);
   // 2. Add found product to the cart array or update its quantity in case it has been added previously.
+  let inCart = false;
+  for (const product of cart) {
+    if (chosenProduct.id === product.id) {
+      inCart = true;
+      product.quantity++;
+      product.subTotal = product.quantity * product.price;
+    }
+  }
+  if (!inCart) {
+    chosenProduct.quantity = 1;
+    chosenProduct.subtotal = chosenProduct.price;
+    cart.push(chosenProduct);
+  }
+
+  applyPromotionsCart();
+  console.log(cart);
 }
 
 // Exercise 8
