@@ -24,3 +24,7 @@ body{
     right: 0;
     margin-right: 1rem;
 }
+
+.remove-button {
+    margin-top: 10px;
+}

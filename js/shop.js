@@ -117,7 +117,21 @@ function addToCart(id) {
 // Exercise 8
 function removeFromCart(id) {
   // 1. Loop for to the array products to get the item to add to cart
-  // 2. Add found product to the cartList array
+  let productToRemove = cart.find((product) => id === product.id);
+  if(!productToRemove) return;
+  // 2. Decrease found product to the cartt array
+  if (productToRemove.quantity > 1) {
+    productToRemove.quantity--;
+    productToRemove.subTotal = productToRemove.quantity * productToRemove.price;
+    applyPromotionsCart();
+    console.log(`Aun quedan ${productToRemove.quantity} productos de ${productToRemove.name}`);
+    return;
+  }
+  // 3 Erase from the cart
+  let index = cart.indexOf(productToRemove);
+  cart.splice(index, 1);
+  console.log(cart);
+  
 }
 
 // Exercise 9
