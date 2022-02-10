@@ -1,8 +1,6 @@
 let products;
 (async function loadProducts() {
-  const response = await fetch(
-    "../data/products.json"
-  );
+  const response = await fetch("../data/products.json");
   products = await response.json();
 
   return products;
@@ -25,7 +23,10 @@ function buy(id) {
 }
 
 // Exercise 2
-function cleanCart() {}
+function cleanCart() {
+  cartList.length = 0;
+  console.log(`El carrito esta vacio ${cartList}`);
+}
 
 // Exercise 3
 function calculateTotal() {
