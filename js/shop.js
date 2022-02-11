@@ -13,6 +13,12 @@ let cart = [];
 
 let total = 0;
 
+function removingAllChilds(parent) {
+    while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+    }
+}
+
 // Exercise 1
 function buy(id) {
   // 1. Loop for to the array products to get the item to add to cart
@@ -24,15 +30,17 @@ function buy(id) {
 
 // Exercise 2
 function cleanCart() {
-  cartList.length = 0;
-  console.log(`El carrito esta vacio ${cartList}`);
-  return cartList;
+  cart.length = 0;
+  console.log(`El carrito esta vacio ${cart}`);
+  let ul = document.querySelector('.list');
+  removingAllChilds(ul);
+  return cart;
 }
 
 // Exercise 3
 function calculateTotal() {
   // Calculate total price of the cart using the "cartList" array
-  total = cartList.reduce((acc, { price }) => acc + price, 0).toFixed(2);
+  total = cart.reduce((acc, { subTotalWithDiscount }) => acc + subTotalWithDiscount, 0).toFixed(2);
   console.log(`El total del carrito es ${total}`);
   return total;
 }
@@ -77,10 +85,10 @@ function applyPromotionsCart() {
       );
     }
     if (product.id === 3 && product.quantity >= 10) {
-      product.subTotalWithDiscount = (
+      product.subTotalWithDiscount = Number((
         ((product.price * 2) / 3) *
         product.quantity
-      ).toFixed(2);
+      ).toFixed(2));
       console.log(
         `El precio total con descuento de ${product.name} es ${product.subTotalWithDiscount}`
       );
@@ -102,11 +110,13 @@ function addToCart(id) {
       inCart = true;
       product.quantity++;
       product.subTotal = product.quantity * product.price;
+      product.subTotalWithDiscount = product.subTotal;
     }
   }
   if (!inCart) {
     chosenProduct.quantity = 1;
-    chosenProduct.subtotal = chosenProduct.price;
+    chosenProduct.subTotal = chosenProduct.price;
+    chosenProduct.subTotalWithDiscount = chosenProduct.subTotal;
     cart.push(chosenProduct);
   }
 
@@ -123,6 +133,7 @@ function removeFromCart(id) {
   if (productToRemove.quantity > 1) {
     productToRemove.quantity--;
     productToRemove.subTotal = productToRemove.quantity * productToRemove.price;
+    productToRemove.subTotalWithDiscount = productToRemove.subTotal;
     applyPromotionsCart();
     console.log(`Aun quedan ${productToRemove.quantity} productos de ${productToRemove.name}`);
     return;
@@ -131,10 +142,49 @@ function removeFromCart(id) {
   let index = cart.indexOf(productToRemove);
   cart.splice(index, 1);
   console.log(cart);
-  
 }
 
 // Exercise 9
 function printCart() {
   // Fill the shopping cart modal manipulating the shopping cart dom
+  let ul = document.querySelector(".list");
+  removingAllChilds(ul);
+  let fragment = document.createDocumentFragment();
+  for (const {name, subTotal ,subTotalWithDiscount, quantity} of cart) {
+    let li = document.createElement('li');
+    let item = document.createElement('p');
+    let price = document.createElement('p');
+    let discount = document.createElement('p');
+    li.classList.add('d-flex');
+    li.classList.add('justify-content-between');
+    item.textContent = `${quantity} x ${name}`;
+    if (subTotal !== subTotalWithDiscount && subTotalWithDiscount) {
+      let div = document.createElement('div');
+      div.classList.add('d-flex');
+      price.innerHTML = `<del>$${subTotal}</del>`;
+      price.classList.add('text-danger');
+      price.classList.add('mr-2');
+      discount.textContent = `$${subTotalWithDiscount}`
+      li.appendChild(item);
+      div.appendChild(price);
+      div.appendChild(discount);
+      li.appendChild(div)
+      fragment.appendChild(li);
+      continue;
+    }
+    price.textContent = `$${subTotal}`;
+    li.appendChild(item);
+    li.appendChild(price);
+    fragment.appendChild(li);
+  }
+  if (cart.length) {
+    let liTotal = document.createElement('li')
+    let total = document.createElement("p");
+    total.textContent = `Total: $${calculateTotal()}`;
+    liTotal.classList.add('d-flex');
+    liTotal.classList.add('justify-content-end');
+    liTotal.appendChild(total);
+    fragment.appendChild(liTotal);
+  }
+  ul.appendChild(fragment);
 }

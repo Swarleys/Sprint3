@@ -51,7 +51,7 @@
               type="button"
               data-toggle="modal"
               data-target="#cartModal"
-              onclick=""
+              onclick="printCart()"
               href="#beauty"
               ><i class="fas fa-cart-arrow-down"></i> My Cart</a
             >
@@ -316,16 +316,6 @@
                   <a href="checkout.html" class="btn btn-primary m-3"
                     >Checkout</a
                   >
-                </div>
-                <!-- adding buttons for calling the functions of the cart -->
-                <div class="text-center">
-                  <button
-                    type="button"
-                    onclick="calculateTotal()"
-                    class="btn btn-info"
-                  >
-                    Calculate total
-                  </button>
                   <button
                     type="button"
                     onclick="cleanCart()"
