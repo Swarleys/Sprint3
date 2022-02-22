@@ -161,9 +161,8 @@ function printCart() {
     if (subTotal !== subTotalWithDiscount && subTotalWithDiscount) {
       let div = document.createElement('div');
       div.classList.add('d-flex');
-      price.innerHTML = `<del>$${subTotal}</del>`;
+      price.innerHTML = `<del class="mr-2">$${subTotal}</del>`;
       price.classList.add('text-danger');
-      price.classList.add('mr-2');
       discount.textContent = `$${subTotalWithDiscount}`
       li.appendChild(item);
       div.appendChild(price);

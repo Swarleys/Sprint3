@@ -1,47 +1,523 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="./images/favicon-32x32.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/main.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- font awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
-
-    <title>ShopNow</title>
-</head>
-
-<body>
-    <!-- header -->
-    <header class="m-5">
-        <h1 class="text-center m-5"><i class="fas fa-shopping-cart mr-2"></i> ShopNow</h1>
-        <h3 class="text-center m-3">Welcome to your Online Shopping Store.</h3>
+    <script src="./src/dist/js/bootstrap.bundle.min.js" defer></script>
+    <title>Sprint3</title>
+  </head>
+  <body>
+    <header class="container">
+      <nav
+        class="navbar navbar-expand-md navbar-light fixed-top align-items-center pt-3 bg-white"
+      >
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            HOME
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <img src="./images/icon-hamburger.svg" alt="hamburguer icon" />
+          </button>
+          <div
+            class="collapse navbar-collapse justify-content-end"
+            id="navbarSupportedContent"
+          >
+            <ul class="navbar-nav mb-2 mb-lg-0 align-items-center gap-5">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#grocery"
+                  >GROCERY</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#beauty">BEAUTY</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#clothes">CLOTHES</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <button
+                    type="button"
+                    class="btn btn-secondary text-white px-4 hover-secondary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#cartModal"
+                    onclick="printCart()"
+                  >
+                    <i class="fas fa-cart-arrow-down pe-2"></i>
+                    MY CART
+                  </button></a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
+    <section
+      class="position-relative overflow-hidden hero_section pt-5 mb-5 mt-5"
+    >
+      <div
+        class="container d-flex flex-column-reverse flex-md-row gap-3 gap-md-0 mb-5"
+      >
+        <div class="col-12 col-md-6 text-center">
+          <h1 class="mt-0 pt-0 pt-md-5 text-center text-md-start pb-md-2">
+            Do you need a store? we are here for you.
+          </h1>
+          <p
+            class="col-12 col-md-10 text-greybookmark text-center text-md-start pb-md-2"
+          >
+            Whatever you need, grocery, beauty products or clothes, we have
+            everything that you will need for your day to day needs.
+          </p>
+        </div>
+        <div class="col-12 col-md-6 hero_image d-flex justify-content-center">
+          <img
+            src="./images/illustration-hero.jpg"
+            alt="Illustration hero "
+            class="col-12 col-xl-11 rounded-3"
+          />
+        </div>
+      </div>
+    </section>
+    <section class="store-section container pt-5 pb-5">
+      <div
+        class="d-flex flex-column col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 gap-3 pb-5"
+      >
+        <h2 class="text-center" id="grocery">Grocery</h2>
+        <p
+          class="text-center text-greybookmark col-10 offset-1 col-sm-12 offset-sm-0"
+        >
+          Our aim is to make it quick and easy way for you to buy your grocerys
+          from your commodity of your sofa.
+        </p>
+      </div>
+      <div
+        class="container d-flex flex-column flex-lg-row justify-content-center"
+      >
+        <div
+          class="shadow-lg rounded-3 mb-5 products mt-5 pt-1 d-inline-block rounded-3"
+        >
+          <img
+            src="./images/cookingoil.jpg"
+            alt="Cooking oil"
+            class="col-10 m-auto mt-4 mb-4 d-block rounded-3 rounded-3"
+          />
+          <h3 class="text-center mt-3 mb-2">Cooking Oil</h3>
+          <h4 class="text-center">$10.5</h4>
+          <button
+            class="btn btn-primary col-10 offset-1 mb-3 mt-1 hover-primary"
+            onclick="addToCart(1)"
+          >
+            Add to cart
+          </button>
+          <button
+            class="btn btn-danger col-10 offset-1 mb-3 hover-danger"
+            onclick="removeFromCart(1)"
+          >
+            Remove from cart
+          </button>
+        </div>
+        <div
+          class="shadow-lg rounded-3 mb-5 products mt-5 pt-1 d-inline-block rounded-3"
+        >
+          <img
+            src="./images/pasta.jpg"
+            alt="Pasta"
+            class="col-10 m-auto mt-4 mb-4 d-block rounded-3"
+          />
+          <h3 class="text-center mt-3 mb-2">Pasta</h3>
+          <h4 class="text-center">$6.25</h4>
+          <button
+            class="btn btn-primary col-10 offset-1 mb-3 mt-1 hover-primary"
+            onclick="addToCart(2)"
+          >
+            Add to cart
+          </button>
+          <button
+            class="btn btn-danger col-10 offset-1 mb-3 hover-danger"
+            onclick="removeFromCart(2)"
+          >
+            Remove from cart
+          </button>
+        </div>
+        <div
+          class="shadow-lg rounded-3 mb-5 products mt-5 pt-1 d-inline-block rounded-3"
+        >
+          <img
+            src="./images/cupcake.jpg"
+            alt="Cupcake"
+            class="col-10 m-auto mt-4 mb-4 d-block rounded-3"
+          />
+          <h3 class="text-center mt-3 mb-2">Instant cupcake</h3>
+          <h4 class="text-center">$5</h4>
 
-    <!-- Buttons -->
-    <h3 class="text-center">Select your category:</h3>
-    <div class="text-center">
-        <button type="button" onclick="window.location.href = 'shop.html#grocery';" class="btn m-4 mt-5 btn btn-primary">Grocery</button>
-        <button type="button" onclick="window.location.href = 'shop.html#beauty';" class="btn m-4 mt-5 btn btn-primary">Beauty</button>
-        <button type="button" onclick="window.location.href = 'shop.html#clothes';" class="btn m-4 mt-5 btn btn-primary">Clothes</button>
-    </div>
+          <button
+            class="btn btn-primary col-10 offset-1 mb-3 mt-3 hover-primary"
+            onclick="addToCart(3)"
+          >
+            Add to cart
+          </button>
+          <button
+            class="btn btn-danger col-10 offset-1 mb-3 hover-danger"
+            onclick="removeFromCart(3)"
+          >
+            Remove from cart
+          </button>
+        </div>
+      </div>
+    </section>
+    <section class="store-section container pt-5 mt-5">
+      <div
+        class="d-flex flex-column col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 gap-3 pb-5"
+      >
+        <h2 class="text-center" id="beauty">Beauty</h2>
+        <p
+          class="text-center text-greybookmark col-10 offset-1 col-sm-12 offset-sm-0"
+        >
+          If you need All-In-One make up, a Zero make-up or your favourite Lip
+          tint, our section of beauty is the perfect place where to find it.
+        </p>
+      </div>
+      <div
+        class="container d-flex flex-column flex-lg-row justify-content-center"
+      >
+        <div
+          class="shadow-lg rounded-3 mb-5 products beauty mt-5 pt-1 d-inline-block rounded-3"
+        >
+          <img
+            src="./images/allinone.jpg"
+            alt="All-in-One"
+            class="col-10 m-auto mt-4 mb-4 d-block rounded-3 rounded-3"
+          />
+          <h3 class="text-center mt-3 mb-2">All-in-One</h3>
+          <h4 class="text-center">$260</h4>
+          <button
+            class="btn btn-primary col-10 offset-1 mb-3 mt-1 hover-primary"
+            onclick="addToCart(4)"
+          >
+            Add to cart
+          </button>
+          <button
+            class="btn btn-danger col-10 offset-1 mb-3 hover-danger"
+            onclick="removeFromCart(4)"
+          >
+            Remove from cart
+          </button>
+        </div>
+        <div
+          class="shadow-lg rounded-3 mb-5 products beauty mt-5 pt-1 d-inline-block rounded-3"
+        >
+          <img
+            src="./images/zeromakeup.jpg"
+            alt="Zero make-up"
+            class="col-10 m-auto mt-4 mb-4 d-block rounded-3"
+          />
+          <h3 class="text-center mt-3 mb-2">Zero make-up</h3>
+          <h4 class="text-center">$20.5</h4>
+          <button
+            class="btn btn-primary col-10 offset-1 mb-3 mt-1 hover-primary"
+            onclick="addToCart(5)"
+          >
+            Add to cart
+          </button>
+          <button
+            class="btn btn-danger col-10 offset-1 mb-3 hover-danger"
+            onclick="removeFromCart(5)"
+          >
+            Remove from cart
+          </button>
+        </div>
+        <div
+          class="shadow-lg rounded-3 mb-5 products beauty mt-5 pt-1 d-inline-block rounded-3"
+        >
+          <img
+            src="./images/liptints.jpg"
+            alt="Lip tints"
+            class="col-10 m-auto mt-4 mb-4 d-block rounded-3"
+          />
+          <h3 class="text-center mt-3 mb-2">Lip tints</h3>
+          <h4 class="text-center">$5</h4>
 
-    <!-- script tags -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
-</body>
+          <button
+            class="btn btn-primary col-10 offset-1 mb-3 mt-3 hover-primary"
+            onclick="addToCart(6)"
+          >
+            Add to cart
+          </button>
+          <button
+            class="btn btn-danger col-10 offset-1 mb-3 hover-danger"
+            onclick="removeFromCart(6)"
+          >
+            Remove from cart
+          </button>
+        </div>
+      </div>
+    </section>
+    <section class="store-section container pt-5 my-5 pb-5">
+      <div
+        class="d-flex flex-column col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 gap-3 pb-5"
+      >
+        <h2 class="text-center" id="clothes">Clothes</h2>
+        <p
+          class="text-center text-greybookmark col-10 offset-1 col-sm-12 offset-sm-0"
+        >
+          Even if you want dresses for weedings, frock for the toddlers or a fashionable lawn-chiffon, you will be find the best product of clothes that you can imagine.
+        </p>
+      </div>
+      <div
+        class="container d-flex flex-column flex-lg-row justify-content-center"
+      >
+        <div
+          class="shadow-lg rounded-3 mb-5 products mt-5 pt-1 d-inline-block rounded-3"
+        >
+          <img
+            src="./images/lawndress.jpg"
+            alt="Lawn dress"
+            class="col-10 m-auto mt-4 mb-4 d-block rounded-3 rounded-3"
+          />
+          <h3 class="text-center mt-3 mb-2">Lawn Dress</h3>
+          <h4 class="text-center">$15</h4>
+          <button
+            class="btn btn-primary col-10 offset-1 mb-3 mt-1 hover-primary"
+            onclick="addToCart(7)"
+          >
+            Add to cart
+          </button>
+          <button
+            class="btn btn-danger col-10 offset-1 mb-3 hover-danger"
+            onclick="removeFromCart(7)"
+          >
+            Remove from cart
+          </button>
+        </div>
+        <div
+          class="shadow-lg rounded-3 mb-5 products mt-5 pt-1 d-inline-block rounded-3"
+        >
+          <img
+            src="./images/chiffon.jpg"
+            alt="Lawn-chiffon"
+            class="col-10 m-auto mt-4 mb-4 d-block rounded-3"
+          />
+          <h3 class="text-center mt-3 mb-2">Lawn-chiffon</h3>
+          <h4 class="text-center">$19.99</h4>
+          <button
+            class="btn btn-primary col-10 offset-1 mb-3 mt-1 hover-primary"
+            onclick="addToCart(8)"
+          >
+            Add to cart
+          </button>
+          <button
+            class="btn btn-danger col-10 offset-1 mb-3 hover-danger"
+            onclick="removeFromCart(8)"
+          >
+            Remove from cart
+          </button>
+        </div>
+        <div
+          class="shadow-lg rounded-3 mb-5 products mt-5 pt-1 d-inline-block rounded-3"
+        >
+          <img
+            src="./images/toddlerfrock.jpg"
+            alt="Toddler frock"
+            class="col-10 m-auto mt-4 mb-4 d-block rounded-3"
+          />
+          <h3 class="text-center mt-3 mb-2">Toddler Frock</h3>
+          <h4 class="text-center">$9.99</h4>
 
+          <button
+            class="btn btn-primary col-10 offset-1 mb-3 mt-3 hover-primary"
+            onclick="addToCart(9)"
+          >
+            Add to cart
+          </button>
+          <button
+            class="btn btn-danger col-10 offset-1 mb-3 hover-danger"
+            onclick="removeFromCart(9)"
+          >
+            Remove from cart
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section bg-primary container-fluid py-5">
+      <div
+        class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4"
+      >
+        <p class="text-white text-center mb-4">3000+ already joined</p>
+        <h2 class="text-white text-center mb-4">
+          If you want to receive the best offers, just join!
+        </h2>
+        <form class="text-center needs-validation" novalidate>
+          <div
+            class="mb-3 d-inline-block col-8 me-3 has-validation position-relative"
+          >
+            <label for="contactMail" class="form-label"></label>
+            <input
+              type="email"
+              class="form-control"
+              id="contactMail"
+              placeholder="Enter your email address"
+              name="contactMail"
+              required
+            />
+            <div class="invalid-tooltip">Whoops, make sure it's an email</div>
+          </div>
+          <button
+            type="submit"
+            class="btn btn-secondary text-white hover-secondary"
+          >
+            Contact Us
+          </button>
+        </form>
+      </div>
+    </section>
+    <aside>
+      <div
+        class="modal fade"
+        id="cartModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="cartModalTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="cartModalScrollableTitle">
+                <i class="fas fa-cart-arrow-down"></i>My Cart
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <!-- listing items starts -->
+              <div>
+                <ul class="list"></ul>
+                <div>
+                  <h3 class="text-center bill px-5">Select Something</h3>
+                </div>
+                <div class="text-center">
+                  <a href="checkout.html" class="btn btn-primary m-3"
+                    >Checkout</a
+                  >
+                  <button
+                    type="button"
+                    onclick="cleanCart()"
+                    class="btn btn-danger remove-button"
+                  >
+                    Clean Cart
+                  </button>
+                </div>
+              </div>
+              <!-- listing items ends -->
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary text-white px-4 hover-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <footer>
+      <nav
+        class="navbar navbar-dark bg-dark flex-column flex-md-row justify-content-between align-items-center"
+      >
+        <div
+          class="d-flex justify-content-start flex-column flex-md-row left-side m-0"
+        >
+          <ul class="d-flex mb-0 flex-column flex-md-row">
+            <li class="nav-item">
+              <a class="nav-link text-uppercase text-white" href="#"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-uppercase text-white" href="#grocery"
+                >Grocery</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-uppercase text-white" href="#beauty"
+                >Beauty</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-uppercase text-white" href="#clothes"
+                >Clothes</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="share d-flex gap-5 right-side my-3 m-md-0">
+          <img src="./images/icon-facebook.svg" alt="Facebook icon" />
+          <img src="./images/icon-twitter.svg" alt="Twitter icon" />
+        </div>
+      </nav>
+    </footer>
+    <script src="./src/dist/js/shop.js"></script>
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (() => {
+        "use strict";
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll(".needs-validation");
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms).forEach((form) => {
+          form.addEventListener(
+            "submit",
+            (event) => {
+              if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add("was-validated");
+            },
+            false
+          );
+        });
+      })();
+    </script>
+  </body>
 </html>
