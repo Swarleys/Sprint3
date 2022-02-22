@@ -1,0 +1,27 @@
+{
+  "name": "sprint3",
+  "version": "1.0.0",
+  "description": "Sprint 3 ITAcademy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Swarleys/Sprint3.git"
+  },
+  "keywords": [
+    "Bootstrap5",
+    "SASS"
+  ],
+  "author": "Esteban Ramos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Swarleys/Sprint3/issues"
+  },
+  "homepage": "https://github.com/Swarleys/Sprint3#readme",
+  "dependencies": {
+    "@popperjs/core": "^2.10.2",
+    "bootstrap": "^5.1.3"
+  }
+}
